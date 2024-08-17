@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin-Mini-Message-Board</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1><%=locals.title%></h1>
+    <button><a href="http://localhost:3000/new">Create New Message</a></button>
+    <div class="messages">
+      <%for(let message of locals.messages){%> <% let date =
+      `${message.date.getDate()}/${message.date.getMonth()}/${message.date.getFullYear()}`%>
+      <% let url =
+      `http://localhost:3000/message?author=${message.author}&message=${message.message}&date=${date}`%>
+      <div class="message">
+        <h2><span>Author:</span><%=message.author%></h2>
+        <p><span>Date:</span><%=date%></p>
+        <p><%=message.message%></p>
+        <button><a href="<%= url%>">open</a></button>
+      </div>
+      <%}%>
+    </div>
+  </body>
+</html>

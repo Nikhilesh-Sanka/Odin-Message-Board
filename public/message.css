@@ -1,0 +1,32 @@
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  width: min(900px, 90%);
+  margin: 10px auto;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.main > *:first-child {
+  font-size: 1.4rem;
+  font-weight: normal;
+}
+.main > *:nth-child(2) {
+  justify-self: end;
+}
+.main > *:last-child {
+  text-align: center;
+  grid-column: 1 / span 2;
+}
+
+@media (max-width: 400px) {
+  .main {
+    display: block;
+  }
+  .main > * {
+    margin: 10px;
+    text-align: center;
+  }
+}
