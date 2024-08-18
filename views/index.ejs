@@ -8,7 +8,7 @@
   </head>
   <body>
     <h1><%=locals.title%></h1>
-    <button><a href="http://localhost:3000/new">Create New Message</a></button>
+    <button><a href="/new">Create New Message</a></button>
     <div class="messages">
       <%for(let message of locals.messages){%> <% let url =
       `http://localhost:3000/message?author=${message.author}&message=${message.message}&date=${message.date}`%>
