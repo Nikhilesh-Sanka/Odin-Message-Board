@@ -1,17 +1,10 @@
 const { Router } = require("express");
 const router = Router();
+const queries = require("../db/queries.js");
 
-const messages = [
-  {
-    author: "S.Nikhilesh",
-    message:
-      "I like programming but sometimes it gets so clumsy and frustrating that makes me feel like killing it.",
-    date: new Date(),
-  },
-];
-
-router.route("/").get((req, res) => {
+router.route("/").get(async (req, res) => {
+  let messages = await queries.getMessages();
   res.render("index", { messages, title: "Mini Message Board" });
 });
 
-module.exports = { IndexRouter: router, messages: messages };
+module.exports = { IndexRouter: router };

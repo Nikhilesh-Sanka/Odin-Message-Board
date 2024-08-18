@@ -1,18 +1,18 @@
 const { Router } = require("express");
 const router = Router();
-const { messages } = require("./IndexRoute");
+const queries = require("../db/queries");
 
 router.get("/", (req, res) => {
   res.render("new-message", {});
 });
-router.post("/", (req, res) => {
-  let messageAuthor = req.body["author-name"];
-  let messageText = req.body["message"];
-  let messageDate = new Date();
-  messages.push({
-    author: messageAuthor,
-    message: messageText,
-    date: messageDate,
+router.post("/", async (req, res) => {
+  let reqBody = req.body;
+  let date = new Date();
+  let dateString = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`;
+  await queries.insertMessage({
+    author: reqBody["author-name"],
+    message: reqBody.message,
+    date: dateString,
   });
   res.redirect("/");
 });
