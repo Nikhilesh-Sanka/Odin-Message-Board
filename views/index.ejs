@@ -11,7 +11,7 @@
     <button><a href="/new">Create New Message</a></button>
     <div class="messages">
       <%for(let message of locals.messages){%> <% let url =
-      `http://localhost:3000/message?author=${message.author}&message=${message.message}&date=${message.date}`%>
+      `/message?author=${message.author}&message=${message.message}&date=${message.date}`%>
       <div class="message">
         <h2><span>Author:</span><%=message.author%></h2>
         <p><span>Date:</span><%=message.date%></p>
